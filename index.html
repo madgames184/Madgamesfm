@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="MadGames FM - Dein Gaming Radio. Live Stream, Favoriten und mehr.">
+    <meta name="theme-color" content="#0d0d12">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="MadGames FM">
+    
+    <title>MadGames FM - Gaming Radio</title>
+    
+    <link rel="icon" type="image/jpeg" href="madgamesfm.jpg">
+    <link rel="shortcut icon" type="image/jpeg" href="madgamesfm.jpg">
+    <link rel="apple-touch-icon" href="madgamesfm.jpg">
+    <link rel="apple-touch-icon" sizes="152x152" href="madgamesfm.jpg">
+    <link rel="apple-touch-icon" sizes="180x180" href="madgamesfm.jpg">
+    <link rel="apple-touch-icon" sizes="167x167" href="madgamesfm.jpg">
+    
+    <meta property="og:title" content="MadGames FM">
+    <meta property="og:description" content="Gaming Radio - Live Stream">
+    <meta property="og:image" content="madgamesfm.jpg">
+    <meta property="og:type" content="website">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="grain"></div>
+    
+    <div class="wrapper">
+        <header class="top">
+            <div class="logo-area">
+                <h1 class="brand">MADGAMES<span class="dot">.</span>FM</h1>
+                <p class="sub">GAMING RADIO</p>
+            </div>
+            
+            <div class="quick-btns">
+                <button class="qbtn" id="btnTheme" title="Theme wechseln" aria-label="Theme wechseln">
+                    <span id="themeIcon">🌙</span>
+                </button>
+                <button class="qbtn" id="btnNotif" title="Benachrichtigungen" aria-label="Benachrichtigungen">
+                    <span id="notifIcon">🔕</span>
+                </button>
+            </div>
+        </header>
+
+        <main class="content">
+            <div class="msg" id="msg" role="alert"></div>
+
+            <section class="player-box">
+                <div class="now-playing">
+                    <div class="cover-art" id="coverArt">
+                        <div class="cover-placeholder">🎵</div>
+                    </div>
+                    <div class="track-details">
+                        <div class="track-title" id="trackTitle">Bereit...</div>
+                        <div class="track-artist" id="trackArtist">MadGames FM</div>
+                        <div class="track-meta">
+                            <span id="trackTime">--:--</span>
+                            <span class="sep">•</span>
+                            <span id="listeners">0 Live</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <button class="play-btn" id="playBtn" aria-label="Play/Pause">
+                        <span id="playIcon">▶</span>
+                    </button>
+                    
+                    <div class="vol-area">
+                        <button class="vol-btn" id="volBtn" aria-label="Mute/Unmute">
+                            <span id="volIcon">🔊</span>
+                        </button>
+                        <input type="range" class="vol-slider" id="volSlider" min="0" max="100" value="70" aria-label="Lautstärke">
+                        <span class="vol-val" id="volVal">70%</span>
+                    </div>
+                </div>
+
+                <div class="status-line">
+                    <span class="live-dot"></span>
+                    <span id="statusText">Bereit</span>
+                </div>
+            </section>
+
+            <section class="actions-grid">
+                <a href="https://laut.fm/madgamesfm" class="action-card" target="_blank" rel="noopener" aria-label="Öffne laut.fm">
+                    <span class="ac-icon">🌐</span>
+                    <span class="ac-text">laut.fm</span>
+                </a>
+                <a href="https://discord.gg/PGKgaECbQ3" class="action-card discord" target="_blank" rel="noopener" aria-label="Öffne Discord">
+                    <span class="ac-icon">💬</span>
+                    <span class="ac-text">Discord</span>
+                </a>
+                <button class="action-card" id="favBtn" aria-label="Favorit">
+                    <span class="ac-icon" id="favIcon">🤍</span>
+                    <span class="ac-text" id="favText">Favorit</span>
+                </button>
+                <button class="action-card" id="shareBtn" aria-label="Teilen">
+                    <span class="ac-icon">📤</span>
+                    <span class="ac-text">Teilen</span>
+                </button>
+            </section>
+
+            <section class="stats-row">
+                <div class="stat-item">
+                    <div class="stat-num" id="statSongs">0</div>
+                    <div class="stat-lbl">Songs</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num" id="statTime">0min</div>
+                    <div class="stat-lbl">Hörzeit</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num" id="statFavs">0</div>
+                    <div class="stat-lbl">Favoriten</div>
+                </div>
+            </section>
+
+            <section class="box">
+                <h2 class="box-title">
+                    <span class="icon">❤️</span>
+                    Favoriten
+                </h2>
+                <div class="fav-list" id="favList">
+                    <div class="empty">Noch keine Favoriten gespeichert</div>
+                </div>
+            </section>
+
+            <section class="box">
+                <h2 class="box-title">
+                    <span class="icon">🕒</span>
+                    Zuletzt gespielt
+                </h2>
+                <div class="history-list" id="historyList">
+                    <div class="empty">Lädt...</div>
+                </div>
+            </section>
+
+            <section class="box shortcuts">
+                <h2 class="box-title">
+                    <span class="icon">⌨️</span>
+                    Shortcuts
+                </h2>
+                <div class="shortcut-grid">
+                    <div class="sc-item">
+                        <kbd>Leertaste</kbd>
+                        <span>Play/Pause</span>
+                    </div>
+                    <div class="sc-item">
+                        <kbd>M</kbd>
+                        <span>Mute</span>
+                    </div>
+                    <div class="sc-item">
+                        <kbd>↑</kbd>
+                        <span>Lauter</span>
+                    </div>
+                    <div class="sc-item">
+                        <kbd>↓</kbd>
+                        <span>Leiser</span>
+                    </div>
+                    <div class="sc-item">
+                        <kbd>H</kbd>
+                        <span>Favorit</span>
+                    </div>
+                    <div class="sc-item">
+                        <kbd>S</kbd>
+                        <span>Teilen</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="foot">
+            <p>MadGames FM © 2025 - 2026</p>
+            <p class="small">Gaming trifft Beats 🎮🎵</p>
+        </footer>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
